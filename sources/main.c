@@ -6,7 +6,7 @@
 /*   By: atouba <atouba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 22:06:07 by atouba            #+#    #+#             */
-/*   Updated: 2022/05/09 12:48:04 by atouba           ###   ########.fr       */
+/*   Updated: 2022/05/09 16:36:37 by atouba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,29 @@ void	allocate_t(int **cc, int **cn, int **pl, int **exit)
 	**exit = 0;
 }
 
-void	free_stuff(t_two *two, char **s)
-{
-	int	i;
-
-	i = 0;
-	free(two->data->pl_moves);
-	free(two->data->player_x);
-	free(two->data->player_y);
-	while (i < 40)
-	{
-		free(two->map->mp[i]);
-		i++;
-	}
-}
-
 t_map	g_map;
 t_data	g_data;
 t_two	g_two;
 int		g_fd;
 char	**g_mp;
+
+void	check_file(int fd)
+{
+	if (g_fd < 0)
+	{
+		ft_putstr("Error: invalid map file\n");
+		exit(1);
+	}
+}
+
+void	ch_map(char **g_mp, int w, int h)
+{
+	if (!is_map_valid(g_mp, w, h))
+	{
+		ft_putstr("Error: invalid map\n");
+		exit(1);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -60,12 +63,9 @@ int	main(int argc, char **argv)
 	allocate_t(&g_data.col_count, &g_data.col_num,
 		&g_data.pl_n, &g_data.exit_n);
 	g_fd = open(argv[1], O_RDONLY);
+	check_file(g_fd);
 	g_map = map_to_array(g_fd, g_mp);
-	if (!is_map_valid(g_mp, g_map.width, g_map.height))
-	{
-		ft_putstr("Error: invalid map\n");
-		exit(1);
-	}
+	ch_map(g_mp, g_map.width, g_map.height);
 	g_map.mp = g_mp;
 	g_data.mlx = mlx_init();
 	g_data.win = mlx_new_window(g_data.mlx, g_map.width * 48,
