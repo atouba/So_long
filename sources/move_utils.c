@@ -6,7 +6,7 @@
 /*   By: atouba <atouba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 08:13:58 by atouba            #+#    #+#             */
-/*   Updated: 2022/05/09 12:36:05 by atouba           ###   ########.fr       */
+/*   Updated: 2022/12/19 19:05:25 by atouba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	func_u(t_two *two, int g_x, int g_y)
 		ft_putnbr(*two->data->pl_moves);
 		write(1, "\n", 1);
 		*two->data->pl_moves = *two->data->pl_moves + 1;
-		g_black = mlx_xpm_file_to_image(two->data->mlx, "../images/croped.xpm",
+		g_black = mlx_xpm_file_to_image(two->data->mlx, "images/croped.xpm",
 				&g_a, &g_b);
 		mlx_put_image_to_window(two->data->mlx, two->data->win, g_black,
 			g_x, g_y);
@@ -51,7 +51,7 @@ void	func_u_t(t_two *two, int g_x, int g_y)
 		*two->data->pl_moves = *two->data->pl_moves + 1;
 		if (two->map->mp[g_y / 48 - 1][g_x / 48] == 'C')
 			*two->data->col_count = *two->data->col_count + 1;
-		g_black = mlx_xpm_file_to_image(two->data->mlx, "../images/croped.xpm",
+		g_black = mlx_xpm_file_to_image(two->data->mlx, "images/croped.xpm",
 				&g_a, &g_b);
 		mlx_put_image_to_window(two->data->mlx, two->data->win, g_black,
 			g_x, g_y);
@@ -73,7 +73,7 @@ void	func_r(t_two *two, int g_x, int g_y)
 		ft_putnbr(*two->data->pl_moves);
 		write(1, "\n", 1);
 		*two->data->pl_moves = *two->data->pl_moves + 1;
-		g_black = mlx_xpm_file_to_image(two->data->mlx, "../images/croped.xpm",
+		g_black = mlx_xpm_file_to_image(two->data->mlx, "images/croped.xpm",
 				&g_a, &g_b);
 		mlx_put_image_to_window(two->data->mlx, two->data->win, g_black,
 			g_x, g_y);
@@ -97,7 +97,7 @@ void	func_r_t(t_two *two, int g_x, int g_y)
 		ft_putnbr(*two->data->pl_moves);
 		write(1, "\n", 1);
 		*two->data->pl_moves = *two->data->pl_moves + 1;
-		g_black = mlx_xpm_file_to_image(two->data->mlx, "../images/croped.xpm",
+		g_black = mlx_xpm_file_to_image(two->data->mlx, "images/croped.xpm",
 				&g_a, &g_b);
 		mlx_put_image_to_window(two->data->mlx, two->data->win, g_black,
 			g_x, g_y);
